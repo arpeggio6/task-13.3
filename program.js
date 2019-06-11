@@ -5,6 +5,7 @@ process.stdin.on('readable', function() {
     var input = process.stdin.read();
     if (input !== null) {
         var instruction = input.toString().trim();
+        var env = process.env
 
         switch  (instruction) {
             case '/exit':
@@ -12,7 +13,7 @@ process.stdin.on('readable', function() {
                 process.exit();
                 break;
             case '/version':
-                console.log(process.env);
+                console.log(`Version: ${process.version}`);
                 break;
             default:
                 process.stderr.write('Wrong instruction!\n');
